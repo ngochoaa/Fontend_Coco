@@ -1,4 +1,4 @@
-import 'package:cocotea_eco/Login/Screens/Welcome/welcome_screen.dart';
+import 'package:cocotea_eco/Screen/Login/Screens/Welcome/welcome_screen.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:flutter/material.dart';
 void main() => runApp(const MyApp());

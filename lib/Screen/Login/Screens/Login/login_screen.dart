@@ -1,37 +1,35 @@
-import 'package:cocotea_eco/Login/components/background.dart';
-import 'package:cocotea_eco/Login/responsive.dart';
+import 'package:cocotea_eco/Screen/Login/responsive.dart';
 import 'package:flutter/material.dart';
-import '../../../Screen/Product/Constant.dart';
-import 'components/sign_up_top_image.dart';
-import 'components/signup_form.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+import '../../components/background.dart';
+import 'components/login_form.dart';
+import 'components/login_screen_top_image.dart';
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Background(
       child: SingleChildScrollView(
         child: Responsive(
-          mobile: const MobileSignupScreen(),
+          mobile: const MobileLoginScreen(),
           desktop: Row(
             children: [
               const Expanded(
-                child: SignUpScreenTopImage(),
+                child: LoginScreenTopImage(),
               ),
               Expanded(
-                child: Column(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
                     SizedBox(
                       width: 450,
-                      child: SignUpForm(),
+                      child: LoginForm(),
                     ),
-                    SizedBox(height: defaultPadding / 2),
-                    // SocalSignUp()
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -40,8 +38,8 @@ class SignUpScreen extends StatelessWidget {
   }
 }
 
-class MobileSignupScreen extends StatelessWidget {
-  const MobileSignupScreen({
+class MobileLoginScreen extends StatelessWidget {
+  const MobileLoginScreen({
     Key? key,
   }) : super(key: key);
 
@@ -50,18 +48,17 @@ class MobileSignupScreen extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        const SignUpScreenTopImage(),
+        const LoginScreenTopImage(),
         Row(
           children: const [
             Spacer(),
             Expanded(
               flex: 8,
-              child: SignUpForm(),
+              child: LoginForm(),
             ),
             Spacer(),
           ],
         ),
-        // const SocalSignUp()
       ],
     );
   }
