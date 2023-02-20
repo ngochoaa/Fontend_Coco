@@ -39,7 +39,7 @@ class bottomNavigationBar extends StatelessWidget {
                           builder: (context) => const DashboardPage()));
             },
             icon: SvgPicture.asset(
-              "icons/home.svg",
+              "assets/icons/home.svg",
               color: Color.fromARGB(255, 65, 65, 65),
             ),
             iconSize: 5,
@@ -52,7 +52,7 @@ class bottomNavigationBar extends StatelessWidget {
                           builder: (context) => const BillPage()));
             },
             icon: SvgPicture.asset(
-              "icons/bill.svg",
+              "assets/icons/bill.svg",
               color: Color.fromARGB(255, 65, 65, 65),
             ),
             iconSize: 5,
@@ -65,7 +65,7 @@ class bottomNavigationBar extends StatelessWidget {
                           builder: (context) => const CartPage()));
             },
             icon: SvgPicture.asset(
-              "icons/cart.svg",
+              "assets/icons/cart.svg",
               color: Color.fromARGB(255, 65, 65, 65),
             ),
             iconSize: 5,
@@ -78,7 +78,7 @@ class bottomNavigationBar extends StatelessWidget {
                           builder: (context) => const WalletPage()));
             },
             icon: SvgPicture.asset(
-              "icons/wallet.svg",
+              "assets/icons/wallet.svg",
               color: Color.fromARGB(255, 65, 65, 65),
             ),
             iconSize: 5,
@@ -91,7 +91,7 @@ class bottomNavigationBar extends StatelessWidget {
                           builder: (context) => const UpdateInf()));
             },
             icon: SvgPicture.asset(
-              "icons/user.svg",
+              "assets/icons/user.svg",
               color: Color.fromARGB(255, 65, 65, 65),
             ),
             iconSize: 5,

@@ -27,7 +27,7 @@ class Body extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Column(
       children: [
-        IntermDrink(imgSrc: "image/menucoco/trasuamichio.jpg"),
+        IntermDrink(imgSrc: "assets/image/trasuamichio.jpg"),
         Expanded(
           child: IntemInf(),
         ),

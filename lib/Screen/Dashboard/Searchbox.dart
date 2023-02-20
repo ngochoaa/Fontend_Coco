@@ -19,7 +19,7 @@ class SearchBox extends StatelessWidget {
       child: TextField(
         onChanged: onChange,
         decoration: InputDecoration(border: InputBorder.none,
-        icon: SvgPicture.asset("icons/search1.svg",
+        icon: SvgPicture.asset("assets/icons/search1.svg",
         height: 35, width: 35, color: Color.fromARGB(255, 43, 84, 45),
         ),
         hintText: "Tìm Kiếm"

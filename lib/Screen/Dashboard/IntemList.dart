@@ -14,7 +14,7 @@ class IntemList extends StatelessWidget {
       child: Row(
         children: <Widget>[
           IntemCard(
-            svgSrc: "image/menucoco/trasuamichio.jpg",
+            svgSrc: "assets/image/trasuamichio.jpg",
             title: "Trà Sữa Michio",
             press: () {
               Navigator.push(

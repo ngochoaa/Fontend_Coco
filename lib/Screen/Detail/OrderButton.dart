@@ -30,7 +30,7 @@ class OrderButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
             SvgPicture.asset(
-              "icons/basket.svg",
+              "assets/icons/basket.svg",
               color: Colors.white,
             ),
             SizedBox(height: 10,),

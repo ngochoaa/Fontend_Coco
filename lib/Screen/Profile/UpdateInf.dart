@@ -42,7 +42,7 @@ class _UpdateInfState extends State<UpdateInf> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
                         child: Image.asset(
-                          "image/avatar.jpg",
+                          "assets/image/avatar.jpg",
                           fit: BoxFit.fill,
                           width: double.infinity,
                         ),

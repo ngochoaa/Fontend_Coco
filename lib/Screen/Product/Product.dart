@@ -22,7 +22,7 @@ List<Product> products = [
       price: 29000,
       size: 12,
       description: dummyText,
-      image: "image/menucoco/trasuamichio.jpg",
+      image: "assets/image/trasuamichio.jpg",
       color: Color.fromARGB(255, 232, 228, 228)),
   Product(
       id: 2,
@@ -30,7 +30,7 @@ List<Product> products = [
       price: 234,
       size: 8,
       description: dummyText,
-      image: "image/menucoco/trasuamichio.jpg",
+      image: "assets/image/trasuamichio.jpg",
       color: Color.fromARGB(255, 232, 228, 228)),
   Product(
       id: 3,
@@ -38,7 +38,7 @@ List<Product> products = [
       price: 29000,
       size: 10,
       description: dummyText,
-      image: "image/menucoco/trasuamichio.jpg",
+      image: "assets/image/trasuamichio.jpg",
       color: Color.fromARGB(255, 232, 228, 228)),
   Product(
       id: 4,
@@ -46,7 +46,7 @@ List<Product> products = [
       price: 29000,
       size: 11,
       description: dummyText,
-      image: "image/menucoco/trasuamichio.jpg",
+      image: "assets/image/trasuamichio.jpg",
       color: Color.fromARGB(255, 232, 228, 228)),
   Product(
       id: 5,
@@ -54,7 +54,7 @@ List<Product> products = [
       price: 29000,
       size: 12,
       description: dummyText,
-      image: "image/menucoco/trasuamichio.jpg",
+      image: "assets/image/trasuamichio.jpg",
       color: Color.fromARGB(255, 232, 228, 228)),
   Product(
     id: 6,
@@ -62,7 +62,7 @@ List<Product> products = [
     price: 29000,
     size: 12,
     description: dummyText,
-    image: "image/menucoco/trasuamichio.jpg",
+    image: "assets/image/trasuamichio.jpg",
     color: Color.fromARGB(255, 232, 228, 228),
   ),
 ];

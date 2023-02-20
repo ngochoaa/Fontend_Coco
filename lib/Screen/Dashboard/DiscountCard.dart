@@ -25,7 +25,7 @@ class DiscountCard extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
-                    fit: BoxFit.fill, image: AssetImage("image/discount.png"))),
+                    fit: BoxFit.fill, image: AssetImage("assets/image/discount.png"))),
             child: DecoratedBox(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),

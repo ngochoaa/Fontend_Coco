@@ -25,7 +25,7 @@ class _BodyState extends State<Body> {
               Container(
                  child: Padding(
                    padding: const EdgeInsets.only(left:10, top: 10),
-                   child: Image.asset('image/menucoco/bacxiucotdua.jpg',width: 60, height: 60,),
+                   child: Image.asset('assets/image/bacxiucotdua.jpg',width: 60, height: 60,),
                  )
               )
             ],
