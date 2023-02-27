@@ -1,3 +1,4 @@
+import 'package:cocotea_eco/Screen/Dashboard/Dashboard_page.dart';
 import 'package:cocotea_eco/Screen/Login/Screens/Welcome/welcome_screen.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           ),
           inputDecorationTheme: const InputDecorationTheme(
             filled: true,
-            fillColor: kLightColor,
+            fillColor: kmainLightColor,
             iconColor: kMainColor,
             prefixIconColor: kMainColor,
             contentPadding: EdgeInsets.symmetric(

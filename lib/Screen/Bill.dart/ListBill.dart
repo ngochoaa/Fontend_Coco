@@ -56,7 +56,7 @@ class ListBill extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 100, bottom: 20),
+                      padding: EdgeInsets.only(left: 100, bottom: 0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(15),
                         child: Stack(
@@ -71,7 +71,7 @@ class ListBill extends StatelessWidget {
                             TextButton(
                               style: TextButton.styleFrom(
                                 padding:
-                                    const EdgeInsets.only(left: 20, right: 20),
+                                    const EdgeInsets.only(left: 10, right: 10,),
                                 primary: Colors.white,
                                 textStyle: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold),

@@ -2,7 +2,9 @@
 import 'package:cocotea_eco/Screen/Bill.dart/Billpage.dart';
 import 'package:cocotea_eco/Screen/Cart/Cart.dart';
 import 'package:cocotea_eco/Screen/Dashboard/Dashboard_page.dart';
+import 'package:cocotea_eco/Screen/Menu/screens/home/home_screen.dart';
 import 'package:cocotea_eco/Screen/Profile/UpdateInf.dart';
+import 'package:cocotea_eco/Screen/Sidebar/naviigation_drawer.dart';
 import 'package:cocotea_eco/Screen/Wallet/Wallet_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -62,7 +64,7 @@ class bottomNavigationBar extends StatelessWidget {
                Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const CartPage()));
+                          builder: (context) => HomeScreen()));
             },
             icon: SvgPicture.asset(
               "assets/icons/cart.svg",
@@ -88,7 +90,7 @@ class bottomNavigationBar extends StatelessWidget {
                Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const UpdateInf()));
+                          builder: (context) => const NavigationDrawer()));
             },
             icon: SvgPicture.asset(
               "assets/icons/user.svg",

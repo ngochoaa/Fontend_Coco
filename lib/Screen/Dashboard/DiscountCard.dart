@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class DiscountCard extends StatelessWidget {
   const DiscountCard({
     Key? key,
@@ -25,13 +26,13 @@ class DiscountCard extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
-                    fit: BoxFit.fill, image: AssetImage("assets/image/discount.png"))),
+                    fit: BoxFit.fill,
+                    image: AssetImage("assets/image/discount.png"))),
+                    
             child: DecoratedBox(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    
-                        )
-                        ),
+              borderRadius: BorderRadius.circular(20),
+            )),
           )
         ],
       ),

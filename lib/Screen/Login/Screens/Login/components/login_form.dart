@@ -1,3 +1,4 @@
+import 'package:cocotea_eco/Screen/Dashboard/Dashboard_page.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +47,16 @@ class LoginForm extends StatelessWidget {
           Hero(
             tag: "login_btn",
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return DashboardPage();
+                  },
+                ),
+              );
+              },
               child: Text(
                 "Đăng Nhập".toUpperCase(),
               ),

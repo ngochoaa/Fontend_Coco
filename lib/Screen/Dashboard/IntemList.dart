@@ -28,14 +28,32 @@ class IntemList extends StatelessWidget {
             },
           ),
            IntemCard(
-            svgSrc: "image/menucoco/trasuaoolong.jpg",
+            svgSrc: "assets/image/trasuaoolong.jpg",
             title: "Trà Sữa Ô Long",
-            press: () {},
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return DetailsPage();
+                  },
+                ),
+              );
+            },
           ),
            IntemCard(
-            svgSrc: "image/menucoco/bacxiucotdua.jpg",
+            svgSrc: "assets/image/bacxiucotdua.jpg",
             title: "Bạc Xỉu Cốt Dừa",
-            press: () {},
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return DetailsPage();
+                  },
+                ),
+              );
+            },
           ),
           
         ],
