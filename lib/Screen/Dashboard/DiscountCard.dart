@@ -21,6 +21,7 @@ class DiscountCard extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.only(top: 10),
+           
             width: double.infinity,
             height: 166,
             decoration: BoxDecoration(
