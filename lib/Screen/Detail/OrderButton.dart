@@ -5,9 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class OrderButton extends StatelessWidget {
   const OrderButton({
-    Key? key,
-    required this.size,
-    required this.press,
+    Key key,
+     this.size,
+     this.press,
   }) : super(key: key);
 
   final Size size;

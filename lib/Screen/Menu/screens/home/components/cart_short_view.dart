@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 class CardShortView extends StatelessWidget {
   const CardShortView({
-    Key? key,
-    required this.controller,
+    Key key,
+     this.controller,
   }) : super(key: key);
 
   final HomeController controller;
@@ -29,11 +29,11 @@ class CardShortView extends StatelessWidget {
                 (index) => Padding(
                   padding: const EdgeInsets.only(right: defaultPadding / 2),
                   child: Hero(
-                    tag: controller.cart[index].product!.title! + "_cartTag",
+                    tag: controller.cart[index].product.title + "_cartTag",
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
                       backgroundImage:
-                          AssetImage(controller.cart[index].product!.image!),
+                          AssetImage(controller.cart[index].product.image),
                     ),
                   ),
                 ),

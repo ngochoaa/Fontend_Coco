@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 
 class CartDetailsViewCard extends StatelessWidget {
   const CartDetailsViewCard({
-    Key? key,
-    required this.productItem,
+    Key key,
+     this.productItem,
   }) : super(key: key);
 
   final ProductItem productItem;
@@ -19,13 +19,13 @@ class CartDetailsViewCard extends StatelessWidget {
       leading: CircleAvatar(
         radius: 25,
         backgroundColor: Colors.white,
-        backgroundImage: AssetImage(productItem.product!.image!),
+        backgroundImage: AssetImage(productItem.product.image),
       ),
       title: Text(
-        productItem.product!.title!,
+        productItem.product.title,
         style: Theme.of(context)
             .textTheme
-            .subtitle1!
+            .subtitle1
             .copyWith(fontWeight: FontWeight.bold),
       ),
       trailing: FittedBox(
@@ -36,7 +36,7 @@ class CartDetailsViewCard extends StatelessWidget {
               "  x ${productItem.quantity}",
               style: Theme.of(context)
                   .textTheme
-                  .subtitle1!
+                  .subtitle1
                   .copyWith(fontWeight: FontWeight.bold),
             )
           ],

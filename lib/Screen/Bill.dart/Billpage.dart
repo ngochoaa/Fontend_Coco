@@ -5,7 +5,7 @@ import 'package:cocotea_eco/Screen/BottomNavBar/BottomNavBar.dart';
 import 'package:flutter/material.dart';
 
 class BillPage extends StatefulWidget {
-  const BillPage({Key? key}) : super(key: key);
+  const BillPage({Key key}) : super(key: key);
 
   @override
   State<BillPage> createState() => _BillPageState();

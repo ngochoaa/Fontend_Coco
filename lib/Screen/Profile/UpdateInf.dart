@@ -7,7 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../dashboard/dashboard_page.dart';
 
 class UpdateInf extends StatefulWidget {
-  const UpdateInf({Key? key}) : super(key: key);
+  const UpdateInf({Key key}) : super(key: key);
 
   @override
   State<UpdateInf> createState() => _UpdateInfState();

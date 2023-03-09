@@ -2,11 +2,11 @@ import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:flutter/material.dart';
 class AlreadyHaveAnAccountCheck extends StatelessWidget {
   final bool login;
-  final Function? press;
+  final Function press;
   const AlreadyHaveAnAccountCheck({
-    Key? key,
+    Key key,
     this.login = true,
-    required this.press,
+     this.press,
   }) : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
           style: const TextStyle(color: kMainColor),
         ),
         GestureDetector(
-          onTap: press as void Function()?,
+          onTap: press as void Function(),
           child: Text(
             login ? "Đăng Ký" : "Đăng Nhập",
             style: const TextStyle(

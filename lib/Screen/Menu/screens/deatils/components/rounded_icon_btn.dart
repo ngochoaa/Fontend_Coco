@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class RoundIconBtn extends StatelessWidget {
   const RoundIconBtn({
-    Key? key,
-    required this.iconData,
+    Key key,
+     this.iconData,
     this.color = kMainColor,
-    required this.press,
+     this.press,
   }) : super(key: key);
 
   final IconData iconData;

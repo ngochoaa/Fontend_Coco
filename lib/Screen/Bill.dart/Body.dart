@@ -4,7 +4,7 @@ import 'package:cocotea_eco/Screen/Bill.dart/Statusbill.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
+  const Body({Key key}) : super(key: key);
 
   @override
   State<Body> createState() => _BodyState();

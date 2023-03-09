@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 class IntermDrink extends StatelessWidget {
   final String imgSrc;
   const IntermDrink({
-    Key? key,
-    required this.imgSrc,
+    Key key,
+     this.imgSrc,
   }) : super(key: key);
 
   @override

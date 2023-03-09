@@ -3,10 +3,10 @@ class IntemCard extends StatelessWidget {
   final String title, svgSrc;
   final void Function() press;
   const IntemCard({
-    Key? key,
-    required this.title,
-    required this.svgSrc,
-    required this.press,
+    Key key,
+     this.title,
+     this.svgSrc,
+     this.press,
   }) : super(key: key);
 
   @override
@@ -48,8 +48,8 @@ class IntemCard extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 10),
                   child: Center(
                     child: Text(
-                      textAlign: TextAlign.center,
                       title,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Color.fromARGB(255, 90, 89, 89),
                           fontWeight: FontWeight.bold,

@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
-    Key? key,
-    required this.product,
-    required this.press,
+    Key key,
+     this.product,
+     this.press,
   }) : super(key: key);
 
   final Product product;
@@ -31,8 +31,8 @@ class ProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Hero(
-              tag: product.title!,
-              child: Image.asset(product.image!),
+              tag: product.title,
+              child: Image.asset(product.image),
             ),
             SizedBox(
               height: 10,
@@ -41,10 +41,10 @@ class ProductCard extends StatelessWidget {
               alignment: Alignment.center,
             ),
             Text(
-              product.title!,
+              product.title,
               style: Theme.of(context)
                   .textTheme
-                  .subtitle1!
+                  .subtitle1
                   .copyWith(fontWeight: FontWeight.w600),
             ),
             SizedBox(

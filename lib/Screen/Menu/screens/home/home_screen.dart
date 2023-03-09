@@ -14,9 +14,9 @@ class HomeScreen extends StatelessWidget {
   final controller = HomeController();
 
   void _onVerticalGesture(DragUpdateDetails details) {
-    if (details.primaryDelta! < -0.7) {
+    if (details.primaryDelta < -0.7) {
       controller.changeHomeState(HomeState.cart);
-    } else if (details.primaryDelta! > 12) {
+    } else if (details.primaryDelta > 12) {
       controller.changeHomeState(HomeState.normal);
     }
   }

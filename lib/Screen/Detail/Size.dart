@@ -5,8 +5,8 @@
 
   class SizeProduct extends StatelessWidget {
     const SizeProduct({
-      Key? key,
-      required this.product,
+      Key key,
+       this.product,
     }) : super(key: key);
 
     final Product product;
@@ -42,8 +42,8 @@
     final Color color;
     final bool isSelected;
     const ColorDot({
-      Key? key,
-      required this.color,
+      Key key,
+       this.color,
       // by default isSelected is false
       this.isSelected = false,
     }) : super(key: key);

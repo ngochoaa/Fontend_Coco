@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 class LoginScreenTopImage extends StatelessWidget {
   const LoginScreenTopImage({
-    Key? key,
+    Key key,
   }) : super(key: key);
 
   @override

@@ -5,7 +5,7 @@ import 'rounded_icon_btn.dart';
 
 class CartCounter extends StatelessWidget {
   const CartCounter({
-    Key? key,
+    Key key,
   }) : super(key: key);
 
   @override

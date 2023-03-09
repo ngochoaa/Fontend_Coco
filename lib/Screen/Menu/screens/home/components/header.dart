@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({
-    Key? key,
+    Key key,
   }) : super(key: key);
 
   @override

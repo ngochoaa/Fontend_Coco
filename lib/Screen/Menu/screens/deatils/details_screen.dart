@@ -9,7 +9,7 @@ import 'components/cart_counter.dart';
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen(
-      {Key? key, required this.product, required this.onProductAdd})
+      {Key key,  this.product,  this.onProductAdd})
       : super(key: key);
 
   final Product product;
@@ -59,8 +59,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   width: double.infinity,
                   color: Color(0xFFF8F8F8),
                   child: Hero(
-                    tag: widget.product.title! + _cartTag,
-                    child: Image.asset(widget.product.image!),
+                    tag: widget.product.title + _cartTag,
+                    child: Image.asset(widget.product.image),
                   ),
                 ),
                 Positioned(
@@ -77,10 +77,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
               children: [
                 Expanded(
                   child: Text(
-                    widget.product.title!,
+                    widget.product.title,
                     style: Theme.of(context)
                         .textTheme
-                        .headline6!
+                        .headline6
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                 ),

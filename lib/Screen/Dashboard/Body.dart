@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:cocotea_eco/Screen/Dashboard/DiscountCard.dart';
 import 'package:cocotea_eco/Screen/Dashboard/IntemList.dart';
 import 'package:cocotea_eco/Screen/Dashboard/Menulist.dart';
 import 'package:cocotea_eco/Screen/Dashboard/Searchbox.dart';
@@ -7,10 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'DiscountCard.dart';
+import 'DiscountCard_Loading.dart';
 
 class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
+  const Body({Key key}) : super(key: key);
 
   @override
   State<Body> createState() => _BodyState();
@@ -27,8 +28,8 @@ class _BodyState extends State<Body> {
             onChange: (value) {},
           ),
           menulist(),
-          IntemList(),
-          DiscountCard()
+          const IntemList(),
+          const DiscountCard()
         ],
       ),
     );

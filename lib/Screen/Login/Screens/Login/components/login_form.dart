@@ -1,5 +1,6 @@
 import 'package:cocotea_eco/Screen/Dashboard/Dashboard_page.dart';
 import 'package:cocotea_eco/Screen/Login/Screens/Login/user.dart';
+import 'package:cocotea_eco/Screen/Menu/screens/home/home_screen.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -8,7 +9,7 @@ import '../../Signup/signup_screen.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
-    Key? key,
+    Key key,
   }) : super(key: key);
 
   @override
@@ -16,7 +17,7 @@ class LoginForm extends StatelessWidget {
      User user = User('', '','');
     final _formKey = GlobalKey<FormState>();
     Future save() async {
-      var res = await http.post("http://10.0.12.141:3000/user/login",
+      var res = await http.post("http://192.168.1.61:3000/user/login",
           headers: <String, String>{
             'Context-Type': 'application/json;charSet=UTF-8'
           },
@@ -39,7 +40,7 @@ class LoginForm extends StatelessWidget {
                 user.SDT = value;
               },
               validator: (value) {
-                if (value!.isEmpty) {
+                if (value.isEmpty) {
                   return 'Số điện thoại không được để trống';
                 } else {
                   return null;
@@ -65,7 +66,7 @@ class LoginForm extends StatelessWidget {
                   user.Matkhau = value;
                 },
                 validator: (value) {
-                  if (value!.isEmpty) {
+                  if (value.isEmpty) {
                     return 'Mật khẩu không được để trống';
                   } else {
                     return null;
@@ -88,7 +89,7 @@ class LoginForm extends StatelessWidget {
             tag: "login_btn",
             child: ElevatedButton(
               onPressed: () {
-               if (_formKey.currentState!.validate()) {
+               if (_formKey.currentState.validate()) {
                   save();
                 } else {
                   print('not ok');

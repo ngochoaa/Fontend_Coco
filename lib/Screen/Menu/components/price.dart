@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class Price extends StatelessWidget {
   const Price({
-    Key? key,
-    required this.amount,
+    Key key,
+     this.amount,
   }) : super(key: key);
   final String amount;
 
@@ -21,7 +21,7 @@ class Price extends StatelessWidget {
         
         style: Theme.of(context)
             .textTheme
-            .subtitle1!
+            .subtitle1
             .copyWith(fontWeight: FontWeight.w600, color: kMainColor),
             text: "\VND ",
       ),

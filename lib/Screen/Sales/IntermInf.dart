@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 class IntemInf extends StatelessWidget {
   const IntemInf({
-    Key? key,
+    Key key,
   }) : super(key: key);
 
   @override
@@ -125,7 +125,7 @@ class IntemInf extends StatelessWidget {
     ))));
   }
 
-  Row shopName({required String name}) {
+  Row shopName({ String name}) {
     return Row(
       children: [
         Icon(
