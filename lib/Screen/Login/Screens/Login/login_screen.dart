@@ -6,7 +6,7 @@ import 'components/login_form.dart';
 import 'components/login_screen_top_image.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
 
 class MobileLoginScreen extends StatelessWidget {
   const MobileLoginScreen({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

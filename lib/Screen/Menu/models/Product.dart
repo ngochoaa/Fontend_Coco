@@ -1,7 +1,7 @@
 class Product {
   final String title, image;
 
-  Product({this.title, this.image});
+  Product({required this.title, required this.image});
 }
 
 List<Product> demo_products = [

@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
-    Key key,
-     this.product,
-     this.press,
+    Key? key,
+     required this.product,
+     required this.press,
   }) : super(key: key);
 
   final Product product;
@@ -44,7 +44,7 @@ class ProductCard extends StatelessWidget {
               product.title,
               style: Theme.of(context)
                   .textTheme
-                  .subtitle1
+                  .subtitle1!
                   .copyWith(fontWeight: FontWeight.w600),
             ),
             SizedBox(

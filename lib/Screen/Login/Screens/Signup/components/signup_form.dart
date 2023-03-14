@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({
-    Key key,
+    Key ?key,
   }) : super(key: key);
 
   @override
@@ -16,7 +16,7 @@ class SignUpForm extends StatelessWidget {
     User user = User('', '', '');
     final _formKey = GlobalKey<FormState>();
     Future save() async {
-      var res = await http.post("http://192.168.1.61:3000/user/create",
+      var res = await http.post(Uri.parse("$baseUrl/user/create"),
           headers: <String, String>{
             'Context-Type': 'application/json;charSet=UTF-8'
           },
@@ -41,7 +41,7 @@ class SignUpForm extends StatelessWidget {
                 user.SDT = value;
               },
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return 'Số điện thoại không được để trống';
                 } else {
                   return null;
@@ -65,7 +65,7 @@ class SignUpForm extends StatelessWidget {
                   user.Matkhau = value;
                 },
                 validator: (value) {
-                  if (value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Mật khẩu không được để trống';
                   } else {
                     return null;
@@ -92,7 +92,7 @@ class SignUpForm extends StatelessWidget {
                   user.TenKH = value;
                 },
                 validator: (value) {
-                  if (value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Nhập tên của bạn';
                   } else {
                     return null;
@@ -113,7 +113,7 @@ class SignUpForm extends StatelessWidget {
             const SizedBox(height: defaultPadding / 2),
             ElevatedButton(
               onPressed: () {
-                if (_formKey.currentState.validate()) {
+                if (_formKey.currentState!.validate()) {
                   save();
                 } else {
                   print('not ok');

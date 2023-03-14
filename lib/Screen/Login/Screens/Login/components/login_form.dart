@@ -9,15 +9,17 @@ import '../../Signup/signup_screen.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
      User user = User('', '','');
     final _formKey = GlobalKey<FormState>();
+  //  var url = Uri()
+
     Future save() async {
-      var res = await http.post("http://192.168.1.61:3000/user/login",
+      var res = await http.post(Uri.parse("$baseUrl/user/login"),
           headers: <String, String>{
             'Context-Type': 'application/json;charSet=UTF-8'
           },
@@ -40,7 +42,7 @@ class LoginForm extends StatelessWidget {
                 user.SDT = value;
               },
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return 'Số điện thoại không được để trống';
                 } else {
                   return null;
@@ -66,7 +68,7 @@ class LoginForm extends StatelessWidget {
                   user.Matkhau = value;
                 },
                 validator: (value) {
-                  if (value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Mật khẩu không được để trống';
                   } else {
                     return null;
@@ -89,7 +91,7 @@ class LoginForm extends StatelessWidget {
             tag: "login_btn",
             child: ElevatedButton(
               onPressed: () {
-               if (_formKey.currentState.validate()) {
+               if (_formKey.currentState!.validate()) {
                   save();
                 } else {
                   print('not ok');

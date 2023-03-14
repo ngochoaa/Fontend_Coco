@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 class SearchBox extends StatelessWidget {
   final ValueChanged<String> onChange;
   const SearchBox({
-    Key key,  this.onChange,
+    Key? key,  required this.onChange,
   }) : super(key: key);
 
   @override

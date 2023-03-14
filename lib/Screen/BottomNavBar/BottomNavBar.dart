@@ -11,7 +11,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class bottomNavigationBar extends StatelessWidget {
   const bottomNavigationBar({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

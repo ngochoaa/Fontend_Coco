@@ -4,10 +4,10 @@ class listfood extends StatelessWidget {
   final bool isActive;
   final void Function() press;
   const listfood(
-      {Key key,
-       this.title,
+      {Key? key,
+       required this.title,
       this.isActive = false,
-       this.press})
+       required this.press})
       : super(key: key);
 
   @override

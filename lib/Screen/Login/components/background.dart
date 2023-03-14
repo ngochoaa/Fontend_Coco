@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class Background extends StatelessWidget {
   final Widget child;
   const Background({
-    Key key,
-     this.child,
+    Key? key,
+     required this.child,
     this.topImage = "assets/image/main_top.png",
     this.bottomImage = "assets/image/login_bottom.png",
   }) : super(key: key);

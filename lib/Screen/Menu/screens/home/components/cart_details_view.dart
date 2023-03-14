@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'cart_detailsview_card.dart';
 
 class CartDetailsView extends StatelessWidget {
-  const CartDetailsView({Key key,  this.controller}) : super(key: key);
+  const CartDetailsView({Key? key,  required this.controller}) : super(key: key);
 
   final HomeController controller;
 

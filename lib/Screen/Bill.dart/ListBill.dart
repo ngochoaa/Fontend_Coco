@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class ListBill extends StatelessWidget {
   const ListBill({
-    Key key,
-     this.time,
+    Key ?key,
+     required this.time,
   }) : super(key: key);
 
   final String time;

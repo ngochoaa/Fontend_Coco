@@ -2,7 +2,7 @@ import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:flutter/material.dart';
 
 class DrawerItem extends StatelessWidget {
-  const DrawerItem({Key key,  this.name,  this.icon,  this.onPressed}) : super(key: key);
+  const DrawerItem({Key? key,  required this.name,  required this.icon,  required this.onPressed}) : super(key: key);
 
   final String name;
   final IconData icon;

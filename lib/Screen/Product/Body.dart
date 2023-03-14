@@ -5,17 +5,15 @@ import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:cocotea_eco/Screen/Product/Interm.dart';
 import 'package:cocotea_eco/Screen/Product/Product.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class Body extends StatefulWidget {
-  const Body({Key key}) : super(key: key);
+class BodyPD extends StatefulWidget {
+  const BodyPD({Key? key}) : super(key: key);
 
   @override
-  State<Body> createState() => _BodyState();
+  State<BodyPD> createState() => _BodyState();
 }
 
-class _BodyState extends State<Body> {
+class _BodyState extends State<BodyPD> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -43,9 +41,10 @@ class _BodyState extends State<Body> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => ItemCard(
-                              product: products[index], press: () {},
+                              product: products[index],
+                              press: () {},
                             ),
-                          )), 
+                          )),
                     )),
           ),
         ],
@@ -53,4 +52,3 @@ class _BodyState extends State<Body> {
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'package:cocotea_eco/Screen/Sidebar/drawer_item.dart';
 import 'package:flutter/material.dart';
 
 class NavigationDrawer extends StatelessWidget {
-  const NavigationDrawer({Key key}) : super(key: key);
+  const NavigationDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class NavigationDrawer extends StatelessWidget {
     );
   }
 
-  void onItemPressed(BuildContext context, { int index}){
+  void onItemPressed(BuildContext context, { required int index}){
     Navigator.pop(context);
 
     switch(index){

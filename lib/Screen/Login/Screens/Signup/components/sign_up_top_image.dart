@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class SignUpScreenTopImage extends StatelessWidget {
   const SignUpScreenTopImage({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

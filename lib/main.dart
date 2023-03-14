@@ -1,21 +1,15 @@
-import 'package:cocotea_eco/Screen/Dashboard/Dashboard_page.dart';
 import 'package:cocotea_eco/Screen/Login/Screens/Welcome/welcome_screen.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
-import 'package:cocotea_eco/router/app_pages.dart';
-import 'package:cocotea_eco/router/app_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      initialRoute: AppRoutes.HOME,
-      getPages: AppPages.list,
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Auth',
       theme: ThemeData(

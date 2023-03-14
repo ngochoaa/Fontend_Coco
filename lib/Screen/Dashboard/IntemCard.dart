@@ -3,10 +3,10 @@ class IntemCard extends StatelessWidget {
   final String title, svgSrc;
   final void Function() press;
   const IntemCard({
-    Key key,
-     this.title,
-     this.svgSrc,
-     this.press,
+    Key? key,
+     required this.title,
+     required this.svgSrc,
+     required this.press,
   }) : super(key: key);
 
   @override

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 class CardShortView extends StatelessWidget {
   const CardShortView({
-    Key key,
-     this.controller,
+    Key? key,
+     required this.controller,
   }) : super(key: key);
 
   final HomeController controller;
