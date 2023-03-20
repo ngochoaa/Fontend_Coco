@@ -2,6 +2,11 @@ import 'dart:developer';
 
 import 'package:card_swiper/card_swiper.dart';
 import 'package:cocotea_eco/Models/product_model.dart';
+import 'package:cocotea_eco/Screen/Dashboard/Dashboard_page.dart';
+import 'package:cocotea_eco/Screen/Detail/Add&Remove.dart';
+import 'package:cocotea_eco/Screen/Detail/OrderButton.dart';
+import 'package:cocotea_eco/Screen/Product/Constant.dart';
+import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:cocotea_eco/Service/API.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
@@ -10,7 +15,7 @@ import 'package:flutter/material.dart';
 class ProductDetails extends StatefulWidget {
   const ProductDetails({
     Key? key,
-     required this.id,
+    required this.id,
   }) : super(key: key);
   final String id;
   @override
@@ -18,7 +23,6 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-  final titleStyle = const TextStyle(fontSize: 24, fontWeight: FontWeight.bold);
   ProductsModel? productsModel;
   bool isError = false;
   String errorStr = "";
@@ -47,7 +51,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         child: isError
             ? Center(
                 child: Text(
-                  "An error occured $errorStr",
+                  "ERROR $errorStr",
                   style: const TextStyle(
                       fontSize: 25, fontWeight: FontWeight.w500),
                 ),
@@ -64,53 +68,33 @@ class _ProductDetailsState extends State<ProductDetails> {
                         const SizedBox(
                           height: 18,
                         ),
-                        const BackButton(),
+                        AppBar(
+                            backgroundColor: Colors.white,
+                            elevation: 0,
+                            leading: IconButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const DashboardPage()));
+                              },
+                              icon: Icon(Icons.arrow_back),
+                              color: Colors.black,
+                            ),
+                            title: Text(
+                              'Chi tiết sản phẩm',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: kTextColor,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold),
+                            )),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(left: 20, right: 20),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                productsModel!.loaiSP!.name.toString(),
-                                style: const TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w500),
-                              ),
-                              const SizedBox(
-                                height: 18,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Flexible(
-                                    flex: 3,
-                                    child: Text(
-                                      productsModel!.tenSP.toString(),
-                                      textAlign: TextAlign.start,
-                                      style: titleStyle,
-                                    ),
-                                  ),
-                                  Flexible(
-                                    flex: 1,
-                                    child: RichText(
-                                      text: TextSpan(
-                                          text: '\ VND',
-                                          style: const TextStyle(
-                                              fontSize: 25,
-                                              color: kMainColor),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                                text: productsModel!.giaSP
-                                                    .toString(),
-                                                style: TextStyle(
-                                                    color: kTextLightColor,
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                          ]),
-                                    ),
-                                  ),
-                                ],
-                              ),
                               const SizedBox(
                                 height: 18,
                               ),
@@ -123,8 +107,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             itemBuilder: (BuildContext context, int index) {
                               return FancyShimmerImage(
                                 width: double.infinity,
-                                imageUrl:
-                                    productsModel!.hinhSP!,
+                                imageUrl: productsModel!.hinhSP!,
                                 boxFit: BoxFit.fill,
                               );
                             },
@@ -142,25 +125,104 @@ class _ProductDetailsState extends State<ProductDetails> {
                           ),
                         ),
                         const SizedBox(
-                          height: 18,
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              color: Color.fromARGB(255, 114, 112, 112),
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              'Coco Tea',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Flexible(
+                              flex: 3,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text(
+                                  productsModel!.tenSP.toString(),
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                      color: kTextColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 24),
+                                ),
+                              ),
+                            ),
+                            Flexible(
+                              flex: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: RichText(
+                                  text: TextSpan(
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text: productsModel!.giaSP.toString(),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.copyWith(
+                                                color: Color.fromARGB(
+                                                    255, 84, 128, 85),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 24),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Mô tả sản phẩm', style: titleStyle),
                               const SizedBox(
                                 height: 18,
                               ),
                               Text(
                                 productsModel!.description.toString(),
                                 textAlign: TextAlign.start,
-                                style: const TextStyle(fontSize: 25),
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 111, 109, 109),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
                               ),
                             ],
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 140, top: 20, bottom: 30),
+                          child: CartCounter(),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 60),
+                          child: Center(
+                            child: OrderButton(
+                              size: size,
+                              press: () {},
+                              
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),

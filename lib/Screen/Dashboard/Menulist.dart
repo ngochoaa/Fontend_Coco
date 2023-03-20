@@ -10,7 +10,6 @@ class menulist extends StatefulWidget {
 
 class _menulistState extends State<menulist> {
   List<String> categories = ["Best Seller", "Trà Sữa", "Cà phê","Nước Ép","Sinh Tố"];
-  // By default our first item will be selected
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {

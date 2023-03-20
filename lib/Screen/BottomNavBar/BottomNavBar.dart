@@ -1,18 +1,28 @@
-
+import 'package:cocotea_eco/Models/UserModel.dart';
 import 'package:cocotea_eco/Screen/Bill.dart/Billpage.dart';
 import 'package:cocotea_eco/Screen/Cart/Cart.dart';
 import 'package:cocotea_eco/Screen/Dashboard/Dashboard_page.dart';
+import 'package:cocotea_eco/Screen/Dashboard/FeedScreen.dart';
 import 'package:cocotea_eco/Screen/Menu/screens/home/home_screen.dart';
+import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:cocotea_eco/Screen/Profile/UpdateInf.dart';
 import 'package:cocotea_eco/Screen/Sidebar/naviigation_drawer.dart';
 import 'package:cocotea_eco/Screen/Wallet/Wallet_page.dart';
+import 'package:cocotea_eco/Service/API.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
-class bottomNavigationBar extends StatelessWidget {
+class bottomNavigationBar extends StatefulWidget {
   const bottomNavigationBar({
     Key? key,
   }) : super(key: key);
+  @override
+  State<bottomNavigationBar> createState() => _bottomNavigationBarState();
+}
+
+class _bottomNavigationBarState extends State<bottomNavigationBar> {
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +45,10 @@ class bottomNavigationBar extends StatelessWidget {
         children: <Widget>[
           IconButton(
             onPressed: () {
-               Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const DashboardPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const DashboardPage()));
             },
             icon: SvgPicture.asset(
               "assets/icons/home.svg",
@@ -48,10 +58,8 @@ class bottomNavigationBar extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-               Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const BillPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const BillPage()));
             },
             icon: SvgPicture.asset(
               "assets/icons/bill.svg",
@@ -61,10 +69,8 @@ class bottomNavigationBar extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-               Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => HomeScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => FeedsScreen()));
             },
             icon: SvgPicture.asset(
               "assets/icons/cart.svg",
@@ -74,10 +80,8 @@ class bottomNavigationBar extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-               Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const WalletPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const WalletPage()));
             },
             icon: SvgPicture.asset(
               "assets/icons/wallet.svg",
@@ -86,11 +90,11 @@ class bottomNavigationBar extends StatelessWidget {
             iconSize: 5,
           ),
           IconButton(
-            onPressed: () {
-               Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const NavigationDrawer()));
+            onPressed: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const NavigationDrawer()))
             },
             icon: SvgPicture.asset(
               "assets/icons/user.svg",
@@ -102,4 +106,6 @@ class bottomNavigationBar extends StatelessWidget {
       ),
     );
   }
+
+  
 }

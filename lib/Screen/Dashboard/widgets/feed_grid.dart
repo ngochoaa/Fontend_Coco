@@ -13,11 +13,11 @@ class FeedsGridWidget extends StatelessWidget {
     return GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: 3,
+        itemCount: 6,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 0.0,
-            mainAxisSpacing: 0.0,
+             crossAxisCount: 2,  
+                  crossAxisSpacing: 20.0,  
+                  mainAxisSpacing: 5.0,
             childAspectRatio: 0.6),
         itemBuilder: (ctx, index) {
           return ChangeNotifierProvider.value(

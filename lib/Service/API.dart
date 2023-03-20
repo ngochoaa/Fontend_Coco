@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:cocotea_eco/Models/UserModel.dart';
 import 'package:cocotea_eco/Models/category_model.dart';
-import 'package:cocotea_eco/Screen/Login/Screens/Login/user.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:http/http.dart' as http;
 
@@ -49,7 +49,19 @@ class APIHandler {
     return ProductsModel.productsFromSnapshot(temp);
   }
 
-  static Future<List<CategoriesModel>> getAllCategories() async {
+
+    static Future<List<UserModel>> getAllUser(
+      { required String limit}) async {
+    List temp = await getData(
+      target: "user",
+      limit: limit,
+    );
+    return UserModel.usersFromSnapshot(temp);
+  }
+
+
+
+  static Future<List<CategoriesModel>> getAllCategories({required String limit}) async {
     List temp = await getData(target: "category");
     return CategoriesModel.categoriesFromSnapshot(temp);
   }
@@ -70,6 +82,27 @@ static Future<ProductsModel> getProductById({ required String id}) async {
       return ProductsModel.fromJson(data);
     } catch (error) {
       log("Không tìm kiếm được sản phẩm $error");
+      throw error.toString();
+    }
+  }
+
+
+  static Future<UserModel> getUserbyID({ required String id}) async {
+    try {
+      var uri = Uri.http(
+        BASE_URL,
+        "/user/$id",
+      );
+      var response = await http.get(uri);
+
+      // print("response ${jsonDecode(response.body)}");
+      var data = jsonDecode(response.body);
+      if (response.statusCode != 200) {
+        throw data["message"];
+      }
+      return UserModel.fromJson(data);
+    } catch (error) {
+      log("Không tìm kiếm được user $error");
       throw error.toString();
     }
   }

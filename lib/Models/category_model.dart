@@ -1,9 +1,11 @@
-class CategoriesModel {
+import 'package:flutter/cupertino.dart';
+
+class CategoriesModel with ChangeNotifier {
   String? sId;
   String? name;
   List<String>? products;
 
-  CategoriesModel(
+  CategoriesModel (
       { this.sId,
        this.name,
        this.products});

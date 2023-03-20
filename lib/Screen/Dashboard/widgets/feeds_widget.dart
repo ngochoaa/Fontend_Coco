@@ -10,14 +10,13 @@ import 'package:provider/provider.dart';
 
 class FeedsWidget extends StatelessWidget {
   const FeedsWidget({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final productsModelProvider = Provider.of<ProductsModel>(context);
 
     Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(5.0),
       child: Material(
         borderRadius: BorderRadius.circular(8.0),
         color: Theme.of(context).cardColor,
@@ -35,8 +34,9 @@ class FeedsWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              
               Padding(
-                padding: const EdgeInsets.only(left: 5, right: 5, top: 8),
+                padding: const EdgeInsets.only(left: 10, right: 5, top: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -45,18 +45,21 @@ class FeedsWidget extends StatelessWidget {
                         text: TextSpan(
                             children: <TextSpan>[
                               TextSpan(
-                                  text: "${productsModelProvider.giaSP}",
+                                 text: '  VND',
                                   style: TextStyle(
-                                      color: kTextLightColor,
+                                    fontSize: 18,
+                                      color: kMainColor,
                                       fontWeight: FontWeight.w600)),
                             ],
-                            text: 'VND   ',
+                             text: "${productsModelProvider.giaSP}",
                             style: const TextStyle(
-                                color: kMainColor),),
+                                color: kTextColor,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),),
                             
                       ),
                     ),
-                    const Icon(IconlyBold.heart),
+                    const Icon(IconlyBold.heart, color: Color.fromARGB(255, 117, 204, 139),),
                   ],
                 ),
               ),
@@ -78,15 +81,18 @@ class FeedsWidget extends StatelessWidget {
               const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  productsModelProvider.tenSP.toString(),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  style: const TextStyle(
-                    fontSize: 17,
-                    //  fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w700,
+                child: Center(
+                  child: Text(
+                    productsModelProvider.tenSP.toString(),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: const TextStyle(
+                      fontSize: 17,
+                      color: kTextColor,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
+                  
                 ),
               ),
               SizedBox(

@@ -1,40 +1,61 @@
-import 'dart:ui';
+import 'dart:developer';
+
+import 'package:cocotea_eco/Models/UserModel.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
+import 'package:cocotea_eco/Screen/Profile/until.dart';
 import 'package:cocotea_eco/Screen/Sidebar/naviigation_drawer.dart';
+import 'package:cocotea_eco/Service/API.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import '../dashboard/dashboard_page.dart';
 
 class UpdateInf extends StatefulWidget {
-  const UpdateInf({Key? key}) : super(key: key);
 
   @override
-  State<UpdateInf> createState() => _UpdateInfState();
+  _UpdateInfState createState() => _UpdateInfState();
 }
 
 class _UpdateInfState extends State<UpdateInf> {
+
+
+  final TextEditingController _controllername = new TextEditingController();
+  final TextEditingController _controllerphone = new TextEditingController();
+  final TextEditingController _controllerdate = new TextEditingController();
+  final TextEditingController _controllergender = new TextEditingController();
+  String userId = '';
+
+
+  
+ 
+
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
-       appBar: AppBar(backgroundColor: kMainColor,
-      elevation: 0,
-      leading: IconButton(onPressed: () {
-        Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const NavigationDrawer()));
-      }, icon: Icon(Icons.arrow_back)),
-       ),
+      appBar: AppBar(
+        backgroundColor: kMainColor,
+        elevation: 0,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const NavigationDrawer()));
+            },
+            icon: Icon(Icons.arrow_back)),
+      ),
       body: SingleChildScrollView(
-        
         child: Padding(
           padding: const EdgeInsets.only(top: 50),
           child: Stack(
             alignment: Alignment.center,
             children: [
-              Padding(padding: const EdgeInsets.only(),
-              
+              Padding(
+                padding: const EdgeInsets.only(),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 500),
@@ -55,7 +76,7 @@ class _UpdateInfState extends State<UpdateInf> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(100),
                           child: Image.asset(
-                            "assets/image/avatar.jpg",
+                            "assets/image/coco.png",
                             fit: BoxFit.fill,
                             width: double.infinity,
                           ),
@@ -65,9 +86,9 @@ class _UpdateInfState extends State<UpdateInf> {
                     Padding(
                       padding: EdgeInsets.all(20),
                       child: Text(
-                        "Ngọc Hoa",
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                        'Ngọc Hoa',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 28),
                       ),
                     ),
                   ],
@@ -84,10 +105,12 @@ class _UpdateInfState extends State<UpdateInf> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 40, right: 20, bottom: 150),
+                padding:
+                    const EdgeInsets.only(left: 40, right: 20, bottom: 150),
                 child: TextField(
+                  controller:_controllername,
                   decoration: InputDecoration(
-                      labelText: "Tên bạn",
+                    hintText: "Tên của bạn",
                       hintStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -97,8 +120,8 @@ class _UpdateInfState extends State<UpdateInf> {
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 20, bottom: 0),
                 child: TextField(
+                  controller:_controllerdate,
                   decoration: InputDecoration(
-                      labelText: "Ngày sinh",
                       hintStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -108,8 +131,8 @@ class _UpdateInfState extends State<UpdateInf> {
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 20, top: 150),
                 child: TextField(
+                  controller:_controllergender,
                   decoration: InputDecoration(
-                      labelText: "Giới tính",
                       hintStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -119,8 +142,8 @@ class _UpdateInfState extends State<UpdateInf> {
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 20, top: 300),
                 child: TextField(
+                  controller:_controllerphone,
                   decoration: InputDecoration(
-                      labelText: "Số điện thoại",
                       hintStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -138,7 +161,9 @@ class _UpdateInfState extends State<UpdateInf> {
                     child: Material(
                       color: Colors.transparent,
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                         // updateUser();
+                        },
                         child: Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: Row(
@@ -150,7 +175,7 @@ class _UpdateInfState extends State<UpdateInf> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 10),
                                   child: Text(
-                                    "CẬP NHẬT THÔNG TIN",
+                                    "Cập nhật thông tin",
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -166,7 +191,36 @@ class _UpdateInfState extends State<UpdateInf> {
           ),
         ),
       ),
-      
     );
   }
+
+
+//   void updateUser() async {
+//     String name = _controllername.text;
+//     String date = _controllerdate.text;
+//     String gender = _controllergender.text;
+//     String phone = _controllerphone.text;
+//      if(name.isNotEmpty && phone.isNotEmpty && date.isNotEmpty && gender.isNotEmpty ){
+//       var url = baseUrl+"/user/$userId";
+//       var bodyData = json.encode({
+//         "TenKH" : name,
+//         "SDT" : phone,
+//         "Gioitinh" : gender,
+//         "Ngaysinh" : date,
+//       });
+//       // var res = await http.post(Uri.parse("$baseUrl/user/login"),
+//       var response = await http.put(Uri.parse(url),
+//       headers: {
+//         "Content-Type" : "application/json",
+//         "Accept" : "application/json"
+//       },body: bodyData);
+//       if(response.statusCode == 200){
+//         var messageSuccess = json.decode(response.body)['message'];
+//         showMessage(context,messageSuccess);
+//       }else {
+//          var messageError = "Không thể cập nhật thông tin!!";
+//         showMessage(context,messageError);
+//       }
+//     }
+// }
 }
