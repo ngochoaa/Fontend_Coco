@@ -6,6 +6,7 @@ import 'package:cocotea_eco/Screen/Dashboard/FeedScreen.dart';
 import 'package:cocotea_eco/Screen/Menu/screens/home/home_screen.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:cocotea_eco/Screen/Profile/UpdateInf.dart';
+import 'package:cocotea_eco/Screen/Profile/profile/profile_screen.dart';
 import 'package:cocotea_eco/Screen/Sidebar/naviigation_drawer.dart';
 import 'package:cocotea_eco/Screen/Wallet/Wallet_page.dart';
 import 'package:cocotea_eco/Service/API.dart';
@@ -94,7 +95,7 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const NavigationDrawer()))
+                      builder: (context) =>  ProfileScreen()))
             },
             icon: SvgPicture.asset(
               "assets/icons/user.svg",
