@@ -219,7 +219,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                             child: OrderButton(
                               size: size,
                               press: () {},
-                              
                             ),
                           ),
                         )

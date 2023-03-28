@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:cocotea_eco/Models/UserModel.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
-import 'package:cocotea_eco/Screen/Profile/until.dart';
+import 'package:cocotea_eco/Screen/Profile/profile/profile_screen.dart';
 import 'package:cocotea_eco/Screen/Sidebar/naviigation_drawer.dart';
 import 'package:cocotea_eco/Service/API.dart';
 import 'package:flutter/material.dart';
@@ -13,38 +13,27 @@ import 'package:provider/provider.dart';
 import '../dashboard/dashboard_page.dart';
 
 class UpdateInf extends StatefulWidget {
-
   @override
   _UpdateInfState createState() => _UpdateInfState();
 }
 
 class _UpdateInfState extends State<UpdateInf> {
-
-
   final TextEditingController _controllername = new TextEditingController();
   final TextEditingController _controllerphone = new TextEditingController();
   final TextEditingController _controllerdate = new TextEditingController();
   final TextEditingController _controllergender = new TextEditingController();
   String userId = '';
 
-
-  
- 
-
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kMainColor,
         elevation: 0,
         leading: IconButton(
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const NavigationDrawer()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()));
             },
             icon: Icon(Icons.arrow_back)),
       ),
@@ -108,9 +97,9 @@ class _UpdateInfState extends State<UpdateInf> {
                 padding:
                     const EdgeInsets.only(left: 40, right: 20, bottom: 150),
                 child: TextField(
-                  controller:_controllername,
+                  controller: _controllername,
                   decoration: InputDecoration(
-                    hintText: "Tên của bạn",
+                      hintText: "Tên của bạn",
                       hintStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -120,7 +109,7 @@ class _UpdateInfState extends State<UpdateInf> {
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 20, bottom: 0),
                 child: TextField(
-                  controller:_controllerdate,
+                  controller: _controllerdate,
                   decoration: InputDecoration(
                       hintStyle: TextStyle(
                           fontSize: 16,
@@ -131,7 +120,7 @@ class _UpdateInfState extends State<UpdateInf> {
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 20, top: 150),
                 child: TextField(
-                  controller:_controllergender,
+                  controller: _controllergender,
                   decoration: InputDecoration(
                       hintStyle: TextStyle(
                           fontSize: 16,
@@ -142,7 +131,7 @@ class _UpdateInfState extends State<UpdateInf> {
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 20, top: 300),
                 child: TextField(
-                  controller:_controllerphone,
+                  controller: _controllerphone,
                   decoration: InputDecoration(
                       hintStyle: TextStyle(
                           fontSize: 16,
@@ -162,7 +151,7 @@ class _UpdateInfState extends State<UpdateInf> {
                       color: Colors.transparent,
                       child: InkWell(
                         onTap: () {
-                         // updateUser();
+                          // updateUser();
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(15.0),
@@ -193,7 +182,6 @@ class _UpdateInfState extends State<UpdateInf> {
       ),
     );
   }
-
 
 //   void updateUser() async {
 //     String name = _controllername.text;

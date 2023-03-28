@@ -1,5 +1,6 @@
 import 'package:cocotea_eco/Screen/Dashboard/Searchbox.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
+import 'package:cocotea_eco/Screen/Profile/profile/profile_screen.dart';
 import 'package:cocotea_eco/Screen/Sidebar/naviigation_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,7 +19,7 @@ class HomeHeader extends StatelessWidget {
         leading: IconButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => NavigationDrawer()));
+                  MaterialPageRoute(builder: (context) => ProfileScreen()));
             },
             icon: SvgPicture.asset(
               "assets/icons/menu.svg",
@@ -44,9 +45,6 @@ class HomeHeader extends StatelessWidget {
               ))
         ],
       ),
-      
     );
-    
   }
-  
 }

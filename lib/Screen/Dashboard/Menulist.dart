@@ -9,7 +9,13 @@ class menulist extends StatefulWidget {
 }
 
 class _menulistState extends State<menulist> {
-  List<String> categories = ["Best Seller", "Trà Sữa", "Cà phê","Nước Ép","Sinh Tố"];
+  List<String> categories = [
+    "Best Seller",
+    "Trà Sữa",
+    "Cà phê",
+    "Nước Ép",
+    "Sinh Tố"
+  ];
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {

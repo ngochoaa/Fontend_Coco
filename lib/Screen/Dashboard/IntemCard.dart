@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+
 class IntemCard extends StatelessWidget {
   final String title, svgSrc;
   final void Function() press;
   const IntemCard({
     Key? key,
-     required this.title,
-     required this.svgSrc,
-     required this.press,
+    required this.title,
+    required this.svgSrc,
+    required this.press,
   }) : super(key: key);
 
   @override
@@ -43,7 +44,6 @@ class IntemCard extends StatelessWidget {
                     width: size.width * 0.30,
                   ),
                 ),
-                
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Center(

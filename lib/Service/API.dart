@@ -10,7 +10,7 @@ import '../Models/product_model.dart';
 
 class APIHandler {
   static Future<List<dynamic>> getData(
-      { required String target, String? limit}) async {
+      {required String target, String? limit}) async {
     try {
       var uri = Uri.http(
           BASE_URL,
@@ -41,7 +41,7 @@ class APIHandler {
   }
 
   static Future<List<ProductsModel>> getAllProducts(
-      { required String limit}) async {
+      {required String limit}) async {
     List temp = await getData(
       target: "sanpham",
       limit: limit,
@@ -49,9 +49,7 @@ class APIHandler {
     return ProductsModel.productsFromSnapshot(temp);
   }
 
-
-    static Future<List<UserModel>> getAllUser(
-      { required String limit}) async {
+  static Future<List<UserModel>> getAllUser({required String limit}) async {
     List temp = await getData(
       target: "user",
       limit: limit,
@@ -59,14 +57,13 @@ class APIHandler {
     return UserModel.usersFromSnapshot(temp);
   }
 
-
-
-  static Future<List<CategoriesModel>> getAllCategories({required String limit}) async {
-    List temp = await getData(target: "category");
-    return CategoriesModel.categoriesFromSnapshot(temp);
+  static Future<List<CategoriesModel>> getAllCategories(
+      {required String limit}) async {
+    List response = await getData(target: "category");
+    return CategoriesModel.categoriesFromSnapshot(response);
   }
 
-static Future<ProductsModel> getProductById({ required String id}) async {
+  static Future<ProductsModel> getProductById({required String id}) async {
     try {
       var uri = Uri.http(
         BASE_URL,
@@ -86,8 +83,7 @@ static Future<ProductsModel> getProductById({ required String id}) async {
     }
   }
 
-
-  static Future<UserModel> getUserbyID({ required String id}) async {
+  static Future<UserModel> getUserbyID({required String id}) async {
     try {
       var uri = Uri.http(
         BASE_URL,

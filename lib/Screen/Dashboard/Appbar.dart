@@ -1,12 +1,4 @@
-import 'package:cocotea_eco/Screen/Bill.dart/Billpage.dart';
-import 'package:cocotea_eco/Screen/Dashboard/Dashboard_page.dart';
-import 'package:cocotea_eco/Screen/Dashboard/DiscountCard.dart';
-import 'package:cocotea_eco/Screen/Dashboard/IntemList.dart';
-import 'package:cocotea_eco/Screen/Dashboard/Menulist.dart';
-import 'package:cocotea_eco/Screen/Dashboard/Searchbox.dart';
-import 'package:cocotea_eco/Screen/Menu/screens/home/home_screen.dart';
-import 'package:cocotea_eco/Screen/Sidebar/naviigation_drawer.dart';
-import 'package:cocotea_eco/Screen/Wallet/Wallet_page.dart';
+import 'package:cocotea_eco/Screen/Profile/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -17,7 +9,7 @@ AppBar homeAppBar(BuildContext context) {
     leading: IconButton(
         onPressed: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => NavigationDrawer()));
+              MaterialPageRoute(builder: (context) => ProfileScreen()));
         },
         icon: SvgPicture.asset(
           "assets/icons/menu.svg",

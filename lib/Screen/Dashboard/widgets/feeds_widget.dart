@@ -27,14 +27,15 @@ class FeedsWidget extends StatelessWidget {
               context,
               PageTransition(
                 type: PageTransitionType.fade,
-                child: ProductDetails(id: productsModelProvider.sId.toString(),),
+                child: ProductDetails(
+                  id: productsModelProvider.sId.toString(),
+                ),
               ),
             );
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
               Padding(
                 padding: const EdgeInsets.only(left: 10, right: 5, top: 8),
                 child: Row(
@@ -43,23 +44,26 @@ class FeedsWidget extends StatelessWidget {
                     Flexible(
                       child: RichText(
                         text: TextSpan(
-                            children: <TextSpan>[
-                              TextSpan(
-                                 text: '  VND',
-                                  style: TextStyle(
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: '  VND',
+                                style: TextStyle(
                                     fontSize: 18,
-                                      color: kMainColor,
-                                      fontWeight: FontWeight.w600)),
-                            ],
-                             text: "${productsModelProvider.giaSP}",
-                            style: const TextStyle(
-                                color: kTextColor,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),),
-                            
+                                    color: kMainColor,
+                                    fontWeight: FontWeight.w600)),
+                          ],
+                          text: "${productsModelProvider.giaSP}",
+                          style: const TextStyle(
+                              color: kTextColor,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
-                    const Icon(IconlyBold.heart, color: Color.fromARGB(255, 117, 204, 139),),
+                    const Icon(
+                      IconlyBold.heart,
+                      color: Color.fromARGB(255, 117, 204, 139),
+                    ),
                   ],
                 ),
               ),
@@ -92,7 +96,6 @@ class FeedsWidget extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  
                 ),
               ),
               SizedBox(

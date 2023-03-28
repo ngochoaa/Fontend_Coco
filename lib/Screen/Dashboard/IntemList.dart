@@ -1,10 +1,9 @@
-
 import 'package:cocotea_eco/Screen/Dashboard/IntemCard.dart';
 import 'package:cocotea_eco/Screen/Detail/Detailpage.dart';
 import 'package:flutter/material.dart';
+
 class IntemList extends StatelessWidget {
   const IntemList({
-    
     Key? key,
   }) : super(key: key);
 
@@ -28,7 +27,7 @@ class IntemList extends StatelessWidget {
               );
             },
           ),
-           IntemCard(
+          IntemCard(
             svgSrc: "assets/image/trasuaoolong.jpg",
             title: "Trà Sữa Ô Long",
             press: () {
@@ -42,7 +41,7 @@ class IntemList extends StatelessWidget {
               );
             },
           ),
-           IntemCard(
+          IntemCard(
             svgSrc: "assets/image/bacxiucotdua.jpg",
             title: "Bạc Xỉu Cốt Dừa",
             press: () {
@@ -56,9 +55,8 @@ class IntemList extends StatelessWidget {
               );
             },
           ),
-          
         ],
       ),
     );
   }
-} 
+}
