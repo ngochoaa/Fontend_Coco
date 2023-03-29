@@ -3,6 +3,7 @@ import 'package:cocotea_eco/Screen/Bill.dart/Billpage.dart';
 import 'package:cocotea_eco/Screen/Cart/Cart.dart';
 import 'package:cocotea_eco/Screen/Dashboard/Dashboard_page.dart';
 import 'package:cocotea_eco/Screen/Dashboard/FeedScreen.dart';
+import 'package:cocotea_eco/Screen/Dashboard/categorycheck/Screen/home.dart';
 import 'package:cocotea_eco/Screen/Menu/screens/home/home_screen.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:cocotea_eco/Screen/Profile/UpdateInf.dart';
@@ -23,8 +24,6 @@ class bottomNavigationBar extends StatefulWidget {
 }
 
 class _bottomNavigationBarState extends State<bottomNavigationBar> {
- 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,8 +69,8 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
           ),
           IconButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => FeedsScreen()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomeView()));
             },
             icon: SvgPicture.asset(
               "assets/icons/cart.svg",
@@ -92,10 +91,8 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
           ),
           IconButton(
             onPressed: () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>  ProfileScreen()))
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()))
             },
             icon: SvgPicture.asset(
               "assets/icons/user.svg",
@@ -107,6 +104,4 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
       ),
     );
   }
-
-  
 }
