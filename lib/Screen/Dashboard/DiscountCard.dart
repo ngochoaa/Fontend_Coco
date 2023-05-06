@@ -6,19 +6,16 @@ class DiscountCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
     Size size = MediaQuery.of(context).size;
     return Container(
       width: double.infinity,
       height: size.height * 0.2,
-       
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
         gradient: const LinearGradient(
             colors: [
-               Color.fromARGB(255, 100, 167, 97),
+              Color.fromARGB(255, 100, 167, 97),
               Color.fromARGB(255, 199, 196, 110),
-             
             ],
             begin: FractionalOffset(0.0, 0.0),
             end: FractionalOffset(1.0, 0.0),
@@ -46,7 +43,10 @@ class DiscountCard extends StatelessWidget {
                     children: const [
                       Text(
                         "Ưu đãi hấp dẫn cho thành viên mới",
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 14),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
                       ),
                       SizedBox(
                         height: 18,
@@ -77,8 +77,8 @@ class DiscountCard extends StatelessWidget {
             flex: 3,
             child: Padding(
               padding: const EdgeInsets.all(14.0),
-              child: Image.network(
-                "https://f9-zpcloud.zdn.vn/5034820970077684476/02dfc9b39db340ed19a2.jpg",
+              child: Image.asset(
+                "assets/image/discount.png",
                 width: double.infinity,
                 // height: double.infinity,
                 fit: BoxFit.contain,

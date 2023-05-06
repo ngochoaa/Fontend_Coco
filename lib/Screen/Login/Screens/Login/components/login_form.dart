@@ -1,11 +1,12 @@
 import 'package:cocotea_eco/Screen/Dashboard/Dashboard_page.dart';
 import 'package:cocotea_eco/Screen/Login/Screens/Login/user.dart';
-import 'package:cocotea_eco/Screen/Menu/screens/home/home_screen.dart';
+import 'package:cocotea_eco/Screen/Menu/screens/home/MenuScreen.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../Signup/signup_screen.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -14,43 +15,48 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     User user = User('', '','');
+    User user = User('', '', '', '', '', '');
     final _formKey = GlobalKey<FormState>();
-  //  var url = Uri()
+
+    final storage = new FlutterSecureStorage();
 
     Future save() async {
-      var res = await http.post(Uri.parse("$baseUrl/user/login"),
-          headers: <String, String>{
-            'Context-Type': 'application/json;charSet=UTF-8'
-          },
-          body: <String, String>{
-            "SDT": user.SDT,
-            "Matkhau": user.Matkhau
-          });
+      var res = await http
+          .post(Uri.parse("$baseUrl/user/login"), headers: <String, String>{
+        'Context-Type': 'application/json;charSet=UTF-8'
+      }, body: <String, String>{
+        "SDT": user.SDT,
+        "Matkhau": user.Matkhau,
+      });
+
       print(res.body);
-      
-      Navigator.push(
-          context, new MaterialPageRoute(builder: (context) => DashboardPage()));
+      String checkID = res.body.replaceAll('"', '');
+      print(checkID);
+
+      await storage.write(key: 'cookie', value: checkID);
+
+      Navigator.push(context,
+          new MaterialPageRoute(builder: (context) => DashboardPage()));
     }
+
     return Form(
       key: _formKey,
       child: Column(
         children: [
           TextFormField(
             controller: TextEditingController(text: user.SDT),
-              onChanged: (value) {
-                user.SDT = value;
-              },
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Số điện thoại không được để trống';
-                } else {
-                  return null;
-                }
-              },
+            onChanged: (value) {
+              user.SDT = value;
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Số điện thoại không được để trống';
+              } else {
+                return null;
+              }
+            },
             textInputAction: TextInputAction.next,
             cursorColor: kMainColor,
-            
             onSaved: (SDT) {},
             decoration: InputDecoration(
               hintText: "Nhập số điện thọai",
@@ -63,17 +69,17 @@ class LoginForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: defaultPadding),
             child: TextFormField(
-               controller: TextEditingController(text: user.Matkhau),
-                onChanged: (value) {
-                  user.Matkhau = value;
-                },
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Mật khẩu không được để trống';
-                  } else {
-                    return null;
-                  }
-                },
+              controller: TextEditingController(text: user.Matkhau),
+              onChanged: (value) {
+                user.Matkhau = value;
+              },
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Mật khẩu không được để trống';
+                } else {
+                  return null;
+                }
+              },
               textInputAction: TextInputAction.done,
               obscureText: true,
               cursorColor: kMainColor,
@@ -91,7 +97,7 @@ class LoginForm extends StatelessWidget {
             tag: "login_btn",
             child: ElevatedButton(
               onPressed: () {
-               if (_formKey.currentState!.validate()) {
+                if (_formKey.currentState!.validate()) {
                   save();
                 } else {
                   print('not ok');

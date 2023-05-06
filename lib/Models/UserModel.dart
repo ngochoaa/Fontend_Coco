@@ -8,11 +8,11 @@ class UserModel with ChangeNotifier {
   String? gender;
 
   UserModel(
-      {this.userID,
-      this.phone,
-      this.name,
-      this.date,
-      this.gender});
+      { this.userID,
+       this.phone,
+       this.name,
+       this.date,
+       this.gender});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     userID = json['_id'];

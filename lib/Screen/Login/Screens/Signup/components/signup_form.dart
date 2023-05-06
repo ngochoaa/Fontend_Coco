@@ -13,7 +13,7 @@ class SignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    User user = User('', '', '');
+    User user = User('', '', '','','','');
     final _formKey = GlobalKey<FormState>();
     Future save() async {
       var res = await http.post(Uri.parse("$baseUrl/user/create"),
@@ -23,7 +23,8 @@ class SignUpForm extends StatelessWidget {
           body: <String, String>{
             "SDT": user.SDT,
             "Matkhau": user.Matkhau,
-            "TenKH": user.TenKH
+            "TenKH": user.TenKH,
+            "sID": user.sID
           });
       print(res.body);
       Navigator.push(

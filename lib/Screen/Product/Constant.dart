@@ -14,5 +14,5 @@ const primaryColor = Color(0xFF40A944);
 
 const panelTransition = Duration(milliseconds: 500);
 
-String baseUrl = 'http://192.168.210.121:3000';
-const String BASE_URL = "192.168.210.121:3000";
+String baseUrl = 'http://192.168.3.181:3000';
+const String BASE_URL = "192.168.3.181:3000";

@@ -1,4 +1,7 @@
+import 'package:cocotea_eco/Models/UserModel.dart';
+import 'package:cocotea_eco/Screen/Profile/UpdateInf.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'profile_menu.dart';
 import 'profile_pic.dart';
@@ -15,7 +18,13 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Thông tin của tôi",
             icon: "assets/icons/User Icon.svg",
-            press: () => {},
+            press: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => UpdateInf(
+                          )))
+            },
           ),
           ProfileMenu(
             text: "Thông báo",

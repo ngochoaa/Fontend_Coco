@@ -15,20 +15,6 @@ class CategoryWidget extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Stack(
         children: [
-          // ClipRRect(
-          //   borderRadius: BorderRadius.circular(12),
-          //   child: FancyShimmerImage(
-          //     height: size.width * 0.45,
-          //     width: size.width * 0.45,
-          //     errorWidget: const Icon(
-          //       IconlyBold.danger,
-          //       color: Colors.red,
-          //       size: 28,
-          //     ),
-          //     imageUrl: categoriesModelProvider.image.toString(),
-          //     boxFit: BoxFit.fill,
-          //   ),
-          // ),
           Align(
             alignment: Alignment.center,
             child: Text(

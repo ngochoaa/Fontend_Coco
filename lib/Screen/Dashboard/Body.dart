@@ -46,38 +46,7 @@ class _BodyState extends State<BodyDB> {
           SizedBox(
             height: 10,
           ),
-          Container(
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                border: Border.all(color: Color.fromARGB(255, 198, 194, 194))),
-            child: TextField(
-              //  controller: controller,
-              decoration: InputDecoration(
-                  border: InputBorder.none,
-                  icon: SvgPicture.asset(
-                    "assets/icons/search1.svg",
-                    height: 35,
-                    width: 35,
-                    color: Color.fromARGB(255, 43, 84, 45),
-                  ),
-                  hintText: "Tìm Kiếm",
-                  fillColor: Colors.white),
-              //-------------SEACHERROR----------
-              // onChanged: (query) {
-              //   final searchReult = productData.where((element) {
-              //     final producttitle = element.tenSP?.toLowerCase();
-              //     final queryLoweCase = query.toLowerCase();
 
-              //     return producttitle!.contains(queryLoweCase);
-              //   }).toList();
-
-              //   products = searchReult;
-              //   setState(() {});
-              // },
-            ),
-          ),
           SizedBox(
             height: 10,
           ),

@@ -3,7 +3,9 @@ import 'dart:developer';
 
 import 'package:cocotea_eco/Models/UserModel.dart';
 import 'package:cocotea_eco/Models/category_model.dart';
+import 'package:cocotea_eco/Models/voucher_model.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 import '../Models/product_model.dart';
@@ -49,6 +51,15 @@ class APIHandler {
     return ProductsModel.productsFromSnapshot(temp);
   }
 
+  static Future<List<VoucherModel>> getAllVoucher(
+      {required String limit}) async {
+    List temp = await getData(
+      target: "uudai",
+      limit: limit,
+    );
+    return VoucherModel.vouchersFromSnapshot(temp);
+  }
+
   static Future<List<UserModel>> getAllUser({required String limit}) async {
     List temp = await getData(
       target: "user",
@@ -79,26 +90,6 @@ class APIHandler {
       return ProductsModel.fromJson(data);
     } catch (error) {
       log("Không tìm kiếm được sản phẩm $error");
-      throw error.toString();
-    }
-  }
-
-  static Future<UserModel> getUserbyID({required String id}) async {
-    try {
-      var uri = Uri.http(
-        BASE_URL,
-        "/user/$id",
-      );
-      var response = await http.get(uri);
-
-      // print("response ${jsonDecode(response.body)}");
-      var data = jsonDecode(response.body);
-      if (response.statusCode != 200) {
-        throw data["message"];
-      }
-      return UserModel.fromJson(data);
-    } catch (error) {
-      log("Không tìm kiếm được user $error");
       throw error.toString();
     }
   }

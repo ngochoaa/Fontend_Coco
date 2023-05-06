@@ -1,6 +1,9 @@
+import 'package:cocotea_eco/Screen/Cart/Cart.dart';
 import 'package:cocotea_eco/Screen/Dashboard/Dashboard_page.dart';
 import 'package:cocotea_eco/Screen/Login/Screens/Welcome/welcome_screen.dart';
+import 'package:cocotea_eco/Screen/Menu/screens/home/MenuScreen.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
+import 'package:cocotea_eco/Screen/Voucher/Screen/VocherScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -38,7 +41,7 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
           )),
-      home: const DashboardPage(),
+      home: DashboardPage(),
     );
   }
 }

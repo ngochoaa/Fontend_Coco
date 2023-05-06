@@ -1,4 +1,4 @@
-import 'package:cocotea_eco/Screen/Dashboard/categorycheck/controllers/cart_repository.dart';
+import 'package:cocotea_eco/Screen/Cart/controllers/cart_repository.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {

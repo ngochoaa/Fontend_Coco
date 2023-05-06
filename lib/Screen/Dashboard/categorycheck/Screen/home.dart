@@ -1,6 +1,8 @@
-import 'package:cocotea_eco/Screen/Dashboard/categorycheck/Screen/cart.dart';
+import 'package:cocotea_eco/Screen/Cart/Cart.dart';
 import 'package:cocotea_eco/Screen/Dashboard/categorycheck/controllers/categories_controller.dart';
+import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class HomeView extends StatefulWidget {
@@ -10,11 +12,14 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   CategoriesController categoriesController = CategoriesController();
+
+
+ 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: _buildAppBar(),
-        backgroundColor: Colors.grey[100],
         body: Obx(() {
           if (categoriesController.loading.value)
             return Center(child: CircularProgressIndicator());
@@ -45,18 +50,20 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           itemCount: productsController.products.length,
                           itemBuilder: (BuildContext context, int index) {
+
                             return Card(
                               elevation: 0.0,
                               child: Container(
                                 height: 150,
-                                padding: EdgeInsets.all(16),
-                                margin: const EdgeInsets.only(bottom: 8.0), 
+                                padding: EdgeInsets.all(5),
+                                margin: const EdgeInsets.only(bottom: 8.0),
                                 child: Column(
                                   children: [
                                     Container(
-                                      height: 100,
-                                      width: 100,
+                                      height: 170,
+                                      width: 160,
                                       decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
                                         image: DecorationImage(
                                           image: NetworkImage(productsController
                                               .products[index]["image"]),
@@ -72,28 +79,27 @@ class _HomeViewState extends State<HomeView> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              productsController.products[index]
-                                                  ["title"],
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                            Expanded(
+                                            Center(
                                               child: Text(
                                                 productsController
-                                                        .products[index]
-                                                    ["description"],
-                                                maxLines: 2,
+                                                    .products[index]["title"],
+                                                style: TextStyle(
+                                                  color: kTextColor,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                                maxLines: 1,
                                                 overflow: TextOverflow.ellipsis,
                                               ),
                                             ),
-                                            Text(
-                                              "\$${productsController.products[index]["price"]}",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            Center(
+                                              child: Text(
+                                                "${productsController.products[index]["price"]} \VND",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: kMainColor),
                                               ),
                                             ),
                                           ],
@@ -124,13 +130,15 @@ class _HomeViewState extends State<HomeView> {
         elevation: 0.0,
         child: Container(
           height: 120,
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(5),
           margin: const EdgeInsets.only(bottom: 8.0),
           child: Row(
             children: [
               Container(
-                width: 100,
+                width: 120,
+                height: 120,
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
                   image: DecorationImage(
                     image: NetworkImage(
                         productsController.products[index]["image"]),
@@ -153,15 +161,11 @@ class _HomeViewState extends State<HomeView> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      Expanded(
-                        child: Text(
-                          productsController.products[index]["description"],
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                      SizedBox(
+                        height: 20,
                       ),
                       Text(
-                        "\$${productsController.products[index]["price"]}",
+                        "${productsController.products[index]["price"]}\VND",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -182,24 +186,23 @@ class _HomeViewState extends State<HomeView> {
       children: [
         Expanded(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            margin: EdgeInsets.all(0),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
-              color: Colors.white,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Cloths",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(color: Color.fromARGB(255, 198, 194, 194))),
+            child: TextField(
+              // onChanged: (value) => _runFilter(value),
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  icon: SvgPicture.asset(
+                    "assets/icons/search1.svg",
+                    height: 25,
+                    width: 25,
+                    color: Color.fromARGB(255, 43, 84, 45),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.keyboard_arrow_down),
-                )
-              ],
+                  hintText: "Tìm Kiếm",
+                  fillColor: Colors.white),
             ),
           ),
         ),
@@ -227,9 +230,9 @@ class _HomeViewState extends State<HomeView> {
                   child: Container(
                     margin: EdgeInsets.only(right: 8),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4.0),
+                      borderRadius: BorderRadius.circular(15),
                       color: index == categoriesController.currentIndex.value
-                          ? Colors.black87
+                          ? kMainColor
                           : Colors.transparent,
                     ),
                     padding: EdgeInsets.symmetric(
@@ -239,9 +242,11 @@ class _HomeViewState extends State<HomeView> {
                     child: Text(
                       categoriesController.categories[index],
                       style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
                         color: index == categoriesController.currentIndex.value
                             ? Colors.white
-                            : Colors.black,
+                            : kTextColor,
                       ),
                     ),
                   ),
@@ -274,4 +279,6 @@ class _HomeViewState extends State<HomeView> {
       ],
     );
   }
+  
+
 }

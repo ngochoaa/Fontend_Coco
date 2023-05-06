@@ -10,7 +10,7 @@ import 'components/cart_short_view.dart';
 import 'components/header.dart';
 import 'components/product_card.dart';
 
-class HomeScreen extends StatelessWidget {
+class MenuScreen extends StatelessWidget {
   final controller = HomeController();
 
   void _onVerticalGesture(DragUpdateDetails details) {

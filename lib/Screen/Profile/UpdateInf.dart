@@ -3,14 +3,15 @@ import 'dart:developer';
 import 'package:cocotea_eco/Models/UserModel.dart';
 import 'package:cocotea_eco/Screen/Product/Constant.dart';
 import 'package:cocotea_eco/Screen/Profile/profile/profile_screen.dart';
-import 'package:cocotea_eco/Screen/Sidebar/naviigation_drawer.dart';
 import 'package:cocotea_eco/Service/API.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import '../Login/Screens/Login/user.dart';
 import '../dashboard/dashboard_page.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class UpdateInf extends StatefulWidget {
   @override
@@ -18,11 +19,52 @@ class UpdateInf extends StatefulWidget {
 }
 
 class _UpdateInfState extends State<UpdateInf> {
-  final TextEditingController _controllername = new TextEditingController();
-  final TextEditingController _controllerphone = new TextEditingController();
-  final TextEditingController _controllerdate = new TextEditingController();
-  final TextEditingController _controllergender = new TextEditingController();
-  String userId = '';
+  UserModel? userinfor;
+  bool isError = false;
+  String errorStr = "";
+
+  static Future<UserModel> getUserbyID() async {
+    final storage = new FlutterSecureStorage();
+
+    String? userId = await storage.read(key: 'cookie');
+    try {
+      var response = await http.get(
+        Uri.parse("$baseUrl/user/$userId"),
+      );
+
+      print("response ${jsonDecode(response.body)}");
+      var data = jsonDecode(response.body);
+      if (response.statusCode != 200) {
+        throw data["message"];
+      }
+      return UserModel.fromJson(data);
+    } catch (error) {
+      log("Không tìm kiếm được user $error");
+      throw error.toString();
+    }
+  }
+
+  final _formKey = GlobalKey<FormState>();
+  User user = User('', '', '', '', '', '');
+
+  Future updateUser() async {
+    final storage = new FlutterSecureStorage();
+
+    String? userId = await storage.read(key: 'cookie');
+    print(userId);
+    print("$baseUrl/user/$userId");
+    var res = await http.put(Uri.parse("$baseUrl/user/$userId"),
+        headers: <String, String>{
+          'Context-Type': 'application/json;charSet=UTF-8'
+        },
+        body: <String, String>{
+          'TenKH': user.TenKH,
+          'Gioitinh': user.Gioitinh,
+          'Ngaysinh': user.Ngaysinh
+        });
+
+    print(res.body);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +78,12 @@ class _UpdateInfState extends State<UpdateInf> {
                   MaterialPageRoute(builder: (context) => ProfileScreen()));
             },
             icon: Icon(Icons.arrow_back)),
+        title: Center(
+          child: Text(
+            'Chi Tiết Thông Tin',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -73,9 +121,9 @@ class _UpdateInfState extends State<UpdateInf> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.only(top: 10, bottom: 100),
                       child: Text(
-                        'Ngọc Hoa',
+                        '',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 28),
                       ),
@@ -83,132 +131,154 @@ class _UpdateInfState extends State<UpdateInf> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 20,
+              ),
               Padding(
-                padding: EdgeInsets.only(bottom: 450, left: 130),
-                child: CircleAvatar(
-                  backgroundColor: Colors.black,
-                  child: IconButton(
-                    icon: Icon(Icons.edit),
-                    onPressed: () {},
+                padding: const EdgeInsets.all(16.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: TextEditingController(text: user.TenKH),
+                        onChanged: (value) {
+                          user.TenKH = value;
+                        },
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Tên của bạn không được để trống';
+                          } else {
+                            return null;
+                          }
+                        },
+                        textInputAction: TextInputAction.next,
+                        cursorColor: kMainColor,
+                        onSaved: (TenKH) {},
+                        decoration: InputDecoration(
+                          hintText: "Nhập tên của bạn",
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(defaultPadding),
+                            child: Icon(Icons.person),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        controller: TextEditingController(text: user.Gioitinh),
+                        onChanged: (value) {
+                          user.Gioitinh = value;
+                        },
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Giới tính của bạn không được để trống';
+                          } else {
+                            return null;
+                          }
+                        },
+                        textInputAction: TextInputAction.next,
+                        cursorColor: kMainColor,
+                        onSaved: (Gioitinh) {},
+                        decoration: InputDecoration(
+                          hintText: "Nhập ngày sinh của bạn",
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(defaultPadding),
+                            child: Icon(Icons.date_range),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        controller: TextEditingController(text: user.Ngaysinh),
+                        onChanged: (value) {
+                          user.Ngaysinh = value;
+                        },
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Ngày sinh của bạn không được để trống';
+                          } else {
+                            return null;
+                          }
+                        },
+                        textInputAction: TextInputAction.next,
+                        cursorColor: kMainColor,
+                        onSaved: (Ngaysinh) {},
+                        decoration: InputDecoration(
+                          hintText: "Nhập giới tính của bạn",
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(defaultPadding),
+                            child: Icon(Icons.person),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: defaultPadding),
+                      Hero(
+                        tag: "update_btn",
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              updateUser();
+                            } else {
+                              print('not ok');
+                            }
+                          },
+                          child: Text(
+                            "Cập nhật thông tin".toUpperCase(),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.only(left: 40, right: 20, bottom: 150),
-                child: TextField(
-                  controller: _controllername,
-                  decoration: InputDecoration(
-                      hintText: "Tên của bạn",
-                      hintStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey)),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40, right: 20, bottom: 0),
-                child: TextField(
-                  controller: _controllerdate,
-                  decoration: InputDecoration(
-                      hintStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey)),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40, right: 20, top: 150),
-                child: TextField(
-                  controller: _controllergender,
-                  decoration: InputDecoration(
-                      hintStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey)),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 40, right: 20, top: 300),
-                child: TextField(
-                  controller: _controllerphone,
-                  decoration: InputDecoration(
-                      hintStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey)),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 600),
-                child: Container(
-                    width: 300,
-                    decoration: BoxDecoration(
-                      color: kMainColor,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () {
-                          // updateUser();
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: Text(
-                                    "Cập nhật thông tin",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18),
-                                  ),
-                                ),
-                              ]),
-                        ),
-                      ),
-                    )),
-              )
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 600),
+              //   child: Container(
+              //       width: 300,
+              //       decoration: BoxDecoration(
+              //         color: kMainColor,
+              //         borderRadius: BorderRadius.circular(20),
+              //       ),
+              //       child: Material(
+              //         color: Colors.transparent,
+              //         child: InkWell(
+              //           onTap: () {
+              //             // updateUser();
+              //           },
+              //           child: Padding(
+              //             padding: const EdgeInsets.all(15.0),
+              //             child: Row(
+              //                 mainAxisAlignment: MainAxisAlignment.center,
+              //                 children: [
+              //                   SizedBox(
+              //                     height: 10,
+              //                   ),
+              //                   Padding(
+              //                     padding: const EdgeInsets.only(left: 10),
+              //                     child: Text(
+              //                       "Cập nhật thông tin",
+              //                       style: TextStyle(
+              //                           color: Colors.white,
+              //                           fontWeight: FontWeight.bold,
+              //                           fontSize: 18),
+              //                     ),
+              //                   ),
+              //                 ]),
+              //           ),
+              //         ),
+              //       )),
+              // )
             ],
           ),
         ),
       ),
     );
   }
-
-//   void updateUser() async {
-//     String name = _controllername.text;
-//     String date = _controllerdate.text;
-//     String gender = _controllergender.text;
-//     String phone = _controllerphone.text;
-//      if(name.isNotEmpty && phone.isNotEmpty && date.isNotEmpty && gender.isNotEmpty ){
-//       var url = baseUrl+"/user/$userId";
-//       var bodyData = json.encode({
-//         "TenKH" : name,
-//         "SDT" : phone,
-//         "Gioitinh" : gender,
-//         "Ngaysinh" : date,
-//       });
-//       // var res = await http.post(Uri.parse("$baseUrl/user/login"),
-//       var response = await http.put(Uri.parse(url),
-//       headers: {
-//         "Content-Type" : "application/json",
-//         "Accept" : "application/json"
-//       },body: bodyData);
-//       if(response.statusCode == 200){
-//         var messageSuccess = json.decode(response.body)['message'];
-//         showMessage(context,messageSuccess);
-//       }else {
-//          var messageError = "Không thể cập nhật thông tin!!";
-//         showMessage(context,messageError);
-//       }
-//     }
-// }
 }
